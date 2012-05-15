@@ -6,6 +6,7 @@
 
 <style type="text/css">
 body{
+	margin:0;
 	background:#ccc;
 }
 #book{
@@ -77,10 +78,18 @@ body{
 	background-image:-o-linear-gradient(right, #FFF 95%, #ddd 100%);
 	background-image:-ms-linear-gradient(right, #FFF 95%, #ddd 100%);
 }
+
+#loading {
+	width: 100%;
+	height: 3000px;
+	background: #000;
+	color: #FFF;
+	font-size: 50px;
+}
 </style>
 </head>
 <body>
-
+<div id="loading">Loading</div>
 <div id="book">
 	<div class="cover"><h1>The Bible</h1></div>
 </div>
@@ -90,7 +99,9 @@ body{
 </div>
 
 <script type="text/javascript">
-
+$(document).ready(function() {
+	$("#loading").fadeOut();
+  // add loader
 	// Sample using dynamic pages with turn.js
 
 	var numberOfPages = 1000; 
@@ -155,7 +166,7 @@ body{
 				$('#book').turn('next');
 
 	});
-
+});
 </script>
 
 
