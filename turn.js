@@ -101,6 +101,10 @@ var has3d,
 
 		duration: 600,
 
+		//Threshhold
+
+		threshhold: 1200,
+
 		// Enables hardware acceleration
 
 		acceleration: true
@@ -1062,13 +1066,12 @@ turnMethods = {
 	// This event is called in context of flip
 
 	_released: function(e, point) {
-		
 		var that = $(this),
 			data = that.data().f;
 
 			e.stopPropagation();
 
-		if ((new Date().getTime())-data.time<200 || point.x<0 || point.x>$(this).width()) {
+		if ((new Date().getTime())-data.time<200 || point.x<data.opts.threshhold || point.x>$(this).width()) {
 			e.preventDefault();
 			data.opts.turn.data().tpage = data.opts.next;
 			data.opts.turn.turn('update');
@@ -1218,7 +1221,6 @@ flipMethods = {
 	},
 
 	options: function(opts) {
-		
 		var data = this.data().f;
 
 		if (opts) {

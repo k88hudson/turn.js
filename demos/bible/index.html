@@ -2,15 +2,15 @@
 <html>
 <head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="../../turn.min.js"></script>
+<script type="text/javascript" src="../../turn.js"></script>
 
 <style type="text/css">
 body{
 	background:#ccc;
 }
 #book{
-	width:800px;
-	height:500px;
+	width:100%;
+	height:2000px;
 }
 
 #book .turn-page{
@@ -106,12 +106,12 @@ body{
 
 	$(window).ready(function(){
 		$('#book').turn({acceleration: true,
+							display: "single",
 							pages: numberOfPages,
 							elevation: 50,
 							gradients: !$.isTouch,
 							when: {
 								turning: function(e, page, view) {
-
 									// Gets the range of pages that the book needs right now
 									var range = $(this).turn('range', page);
 
@@ -136,6 +136,8 @@ body{
 				
 		});
 	});
+
+
 
 	$(window).bind('keydown', function(e){
 
